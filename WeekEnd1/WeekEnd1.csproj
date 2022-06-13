@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <StartupObject>WeekEnd1.Part3Start</StartupObject>
+    <StartupObject>WeekEnd1.Part2Start</StartupObject>
   </PropertyGroup>
 
 </Project>

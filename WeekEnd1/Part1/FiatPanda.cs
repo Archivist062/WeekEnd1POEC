@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace WeekEnd1.Part1
 {
-	internal class RenaultClio : ICar
-	{
-		CarTemplate carTemplate;
+    public class FiatPanda : ICar
+    {
+        public FiatPanda(CarTemplate car)
+        {
+            carTemplate = car;
+        }
+
+        CarTemplate carTemplate;
 
         public string LicencePlate()
         {

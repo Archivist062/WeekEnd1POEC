@@ -33,11 +33,13 @@ namespace WeekEnd1
 
 					album.songs = lines.Select(x => SongFromLine(x)).ToList();
 
-					var albumDateRatio = album.songs.Select(x => x.Year).Aggregate(new Tuple<int, int>(0, 0), (seed, value) =>
+					var albumDateRatio = album.songs
+					.Select(x => x.Year)
+					.Aggregate(new Tuple<int, int>(0, 0), (seed, year) =>
 					{
-						if (value.HasValue)
+						if (year.HasValue)
 						{
-							return new Tuple<int, int>(1, value.Value);
+							return new Tuple<int, int>(1 + seed.Item1, year.Value + seed.Item2);
 						}
 						return seed;
 					});
@@ -56,8 +58,7 @@ namespace WeekEnd1
 			var mostPopularYearsAlbums = ReadAlbums(lines)
 				.Where(x => x.year != 0)
 				.GroupBy(x => x.year, (key, set) => new Tuple<int, int>(set.Count(), key))
-				.OrderBy(x => x.Item1)
-				.Reverse()
+				.OrderByDescending(x => x.Item1)
 				.Take(10);
 
 			foreach(var mostPopularYear in mostPopularYearsAlbums)
@@ -65,6 +66,7 @@ namespace WeekEnd1
 				Console.WriteLine(String.Format(@"{0} albums in {1}", mostPopularYear.Item1, mostPopularYear.Item2));
 			}
 			Console.WriteLine("-----");
+
 			var mostPopularYearsSongs = lines.Select(x => SongFromLine(x))
 				.Where(x => x.Year.HasValue)
 				.Where(x => x.Year.Value != 0)
@@ -81,4 +83,6 @@ namespace WeekEnd1
 			}
 		}
 	}
+
 }
+

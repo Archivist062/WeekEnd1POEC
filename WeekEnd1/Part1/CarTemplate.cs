@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WeekEnd1.Part1
 {
-	internal class CarTemplate : ICar
+	public class CarTemplate : ICar
 	{
-		string IVehicle.LicencePlate()
+		public string LicencePlate()
 		{
 			throw new NotImplementedException();
 		}
@@ -18,7 +18,7 @@ namespace WeekEnd1.Part1
 			throw new NotImplementedException();
 		}
 
-		int ICar.MaxPassengerCount()
+		public int MaxPassengerCount()
 		{
 			throw new NotImplementedException();
 		}

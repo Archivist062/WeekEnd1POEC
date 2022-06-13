@@ -10,10 +10,11 @@ namespace WeekEnd1.Part2
 	{
 		public List<ICreator> Creators { get; } = new List<ICreator>();
 		public string Title { get; }
-		public int? Year { get;  }
+		public int? Year { get; }
 
 		public Song(string title, int? year)
 		{
+			var a = typeof(int?);
 			Title = title;
 			Year = year;
 		}
